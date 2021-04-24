@@ -138,14 +138,22 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 	//movimentoX, movimentoY
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, GL_TRUE);
-	else if (key == GLFW_KEY_W && (action == GLFW_PRESS || action == GLFW_REPEAT))
-		movimentoY += 0.05f;
-	else if (key == GLFW_KEY_A && (action == GLFW_PRESS || action == GLFW_REPEAT))
-		movimentoX -= 0.05f;
-	else if (key == GLFW_KEY_S && (action == GLFW_PRESS || action == GLFW_REPEAT))
-		movimentoY -= 0.05f;
-	else if (key == GLFW_KEY_D && (action == GLFW_PRESS || action == GLFW_REPEAT))
-		movimentoX += 0.05f;
+	else if (key == GLFW_KEY_W && (action == GLFW_PRESS || action == GLFW_REPEAT)) {
+		if (movimentoY <= 0.5f)
+			movimentoY += 0.05f;
+	}
+	else if (key == GLFW_KEY_A && (action == GLFW_PRESS || action == GLFW_REPEAT)) {
+		if (movimentoX >= -0.5f)
+			movimentoX -= 0.05f;
+	}
+	else if (key == GLFW_KEY_S && (action == GLFW_PRESS || action == GLFW_REPEAT)) {
+		if (movimentoY >= -0.5f)
+			movimentoY -= 0.05f;
+	}
+	else if (key == GLFW_KEY_D && (action == GLFW_PRESS || action == GLFW_REPEAT)) {
+		if (movimentoX <= 0.5f)
+			movimentoX += 0.05f;
+	}
 }
 
 int setupGeometry()
